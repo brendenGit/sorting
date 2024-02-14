@@ -1,4 +1,4 @@
-function merge() {
+function merge(arr1, arr2) {
     const results = [];
     let i = 0;
     let j = 0;
@@ -22,6 +22,17 @@ function merge() {
     return results;
 }
 
-function mergeSort() { }
+function mergeSort(arr) {
+    //base case
+    if (arr.length <= 1) return arr;
+
+    //reduce arr to single item
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));
+    const right = mergeSort(arr.slice(mid));
+    return merge(left, right);
+}
+
+const result = mergeSort([4, 20, 12, 10, 7, 9])
 
 module.exports = { merge, mergeSort };
